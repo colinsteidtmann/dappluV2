@@ -7,6 +7,7 @@ require("@nomiclabs/hardhat-web3")
 require("@nomiclabs/hardhat-truffle5")
 require("@nomiclabs/hardhat-etherscan")
 require("hardhat-deploy")
+require('@openzeppelin/hardhat-upgrades');
 require("./tasks/accounts")
 require("./tasks/balance")
 require("./tasks/fund-link")
@@ -21,8 +22,8 @@ require('dotenv').config()
 
 const MAINNET_RPC_URL = process.env.MAINNET_RPC_URL || process.env.ALCHEMY_MAINNET_RPC_URL || "https://eth-mainnet.alchemyapi.io/v2/your-api-key"
 const RINKEBY_RPC_URL = process.env.RINKEBY_RPC_URL || "https://eth-rinkeby.alchemyapi.io/v2/your-api-key"
-const KOVAN_RPC_URL = process.env.KOVAN_RPC_URL || "https://eth-kovan.alchemyapi.io/v2/your-api-key"
-const MNEMONIC = process.env.MNEMONIC || "your mnemonic"
+const KOVAN_RPC_URL = process.env.KOVAN_RPC_URL 
+const MNEMONIC = process.env.MNEMONIC 
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "Your etherscan API key"
 // optional
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "your private key"
@@ -75,15 +76,31 @@ module.exports = {
             default: 1
         }
     },
+    paths: {
+        deploy: 'deploy',
+        deployments: 'client/packages/contracts/src/deployments',
+        artifacts: 'client/packages/contracts/src/deployments/artifacts',
+        imports: 'imports'
+    },
     solidity: {
         compilers: [
             {
                 version: "0.6.6"
             },
             {
+                version: "0.6.12",
+                settings: {
+                  optimizer: {
+                    enabled: true,
+                    runs: 200
+                  }
+                }
+            },
+            {
                 version: "0.4.24"
             }
-        ]
+        ],
+
     },
     mocha: {
         timeout: 100000

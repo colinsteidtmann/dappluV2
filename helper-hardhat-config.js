@@ -9,7 +9,8 @@ const networkConfig = {
         name: 'localhost',
         fee: '100000000000000000',
         keyHash: '0x6c3699283bda56ad74f6b855546325b68d482e983852a7a82979cc4807b641f4',
-        jobId: '29fa9aa13bf1468788b7cc4a500a45b8'
+        bytesJobId: 'b7285d4859da4b289c7861db971baf0a',
+        uintJobId: '982105d690504c5d9ce374d040c08654',
     },
     42: {
         name: 'kovan',
@@ -18,7 +19,8 @@ const networkConfig = {
         keyHash: '0x6c3699283bda56ad74f6b855546325b68d482e983852a7a82979cc4807b641f4',
         vrfCoordinator: '0xdD3782915140c8f3b190B5D67eAc6dc5760C46E9',
         oracle: '0x2f90A6D021db21e1B2A077c5a37B3C7E75D15b7e',
-        jobId: '29fa9aa13bf1468788b7cc4a500a45b8',
+        bytesJobId: '50fc4215f89443d185b061e5d7af9490',
+        uintJobId: 'b6602d14e4734c49a5e1ce19d45a4632',
         fee: '100000000000000000',
     },
     4: {

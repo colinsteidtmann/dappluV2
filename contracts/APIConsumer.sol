@@ -1,6 +1,10 @@
 pragma solidity ^0.6.6;
 
 import "@chainlink/contracts/src/v0.6/ChainlinkClient.sol";
+import "hardhat/console.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@chainlink/contracts/src/v0.6/interfaces/LinkTokenInterface.sol";
+
 
 contract APIConsumer is ChainlinkClient {
   
@@ -9,6 +13,7 @@ contract APIConsumer is ChainlinkClient {
     address private oracle;
     bytes32 private jobId;
     uint256 private fee;
+    LinkTokenInterface link;
     
     /**
      * Network: Kovan
@@ -28,6 +33,11 @@ contract APIConsumer is ChainlinkClient {
         oracle = _oracle;
         jobId = stringToBytes32(_jobId);
         fee = _fee;
+
+        
+        link = LinkTokenInterface(_link);
+
+
     }
     
     /**
@@ -37,7 +47,6 @@ contract APIConsumer is ChainlinkClient {
     function requestVolumeData() public returns (bytes32 requestId) 
     {
         Chainlink.Request memory request = buildChainlinkRequest(jobId, address(this), this.fulfill.selector);
-        
         // Set the URL to perform the GET request on
         request.add("get", "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD");
         
@@ -78,5 +87,11 @@ contract APIConsumer is ChainlinkClient {
         assembly {
             result := mload(add(source, 32))
         }
+    }
+}
+
+contract Num2 {
+    constructor() public {
+
     }
 }

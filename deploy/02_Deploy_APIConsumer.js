@@ -21,12 +21,12 @@ module.exports = async ({
     linkTokenAddress = networkConfig[chainId]['linkToken']
     oracle = networkConfig[chainId]['oracle']
   }
-  const jobId = networkConfig[chainId]['jobId']
+  const uintJobId = networkConfig[chainId]['uintJobId']
   const fee = networkConfig[chainId]['fee']
 
   const apiConsumer = await deploy('APIConsumer', {
     from: deployer,
-    args: [oracle, jobId, fee, linkTokenAddress],
+    args: [oracle, uintJobId, fee, linkTokenAddress],
     log: true
   })
 
@@ -34,6 +34,7 @@ module.exports = async ({
   log("npx hardhat fund-link --contract " + apiConsumer.address + " --network " + networkConfig[chainId]['name'] + additionalMessage)
   log("Then run API Consumer contract with following command:")
   log("npx hardhat request-data --contract " + apiConsumer.address + " --network " + networkConfig[chainId]['name'])
+  log("----------------------------------------------------")
 }
 
 module.exports.tags = ['all', 'api']
