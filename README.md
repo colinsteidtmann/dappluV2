@@ -2,7 +2,7 @@
 ### Letting brands make decentralized smart contracts with content creators for sponsored content and embedded advertisements.
 <p align="center">
    <a target="_blank" href="client/src/images/logo.png">
-    <img src="client/src/images/logo.png" alt="dapplu logo" width="15%" />
+    <img src="client/packages/react-app/src/images/logo.png" alt="dapplu logo" width="15%" />
    </a>
 </p>
 
@@ -21,7 +21,7 @@ https://dapplu.com/
 
 <p align="center">
    <a target="_blank" href="https://www.youtube.com/watch?v=YsyupdrMm6s">
-    <img src="client/src/images/dappluVideo.png" alt="YouTube thumbnail"/>
+    <img src="client/packages/react-app/src/images/dappluVideo.png" alt="YouTube thumbnail"/>
    </a>
 </p>
 
