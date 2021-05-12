@@ -210,7 +210,6 @@ router.post('/', function(req, res, next) {
         res.status(400).send("There was an error")
       })
 
-    res.send('Email sent');
 });
 
 module.exports = router;
