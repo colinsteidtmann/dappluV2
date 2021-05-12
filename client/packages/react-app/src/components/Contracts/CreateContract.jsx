@@ -6,7 +6,18 @@ import { FormInput, FormInputGroup, ValidationDisplay, Modal } from "#GlobalShar
 import {useValidation} from "#Hooks";
 // Helper functions
 const axios = require("axios");
-const ipfs = window.IpfsHttpClient({ host: "ipfs.infura.io", port: 5001, protocol: "https" });
+
+const IPFS = require('ipfs-core')
+
+let ipfs;
+const init = async() => {
+  ipfs = await IPFS.create()
+  const { cid } = await ipfs.add('Hello world')
+  console.log("cid", cid);
+}
+init()
+
+//const ipfs = window.IpfsHttpClient({ host: "ipfs.infura.io", port: 5001, protocol: "https" });
 
 const CreateContract = (props) => {
   const [formVars, setFormVars] = useState({
@@ -54,6 +65,7 @@ const CreateContract = (props) => {
     const reader = new window.FileReader();
     reader.readAsArrayBuffer(file);
     reader.onloadend = () => {
+      setFileBuffer(reader.result);
       return Buffer(reader.result);
     };
   };
@@ -62,6 +74,7 @@ const CreateContract = (props) => {
   const getIPFSHash = async (fileBuffer) => {
     try {
       //IPFS upload
+      console.log("filebuffer", fileBuffer);
       const res = await ipfs.add(fileBuffer);
       const fileHash = res.path;
       return fileHash;
@@ -284,7 +297,7 @@ const CreateContract = (props) => {
               Written Agreement Upload <small>(Optional)</small>
             </>
           }
-          onChange={(e) => setFileBuffer(getFileBuffer(e.target.files[0]))}
+          onChange={(e) => getFileBuffer(e.target.files[0])}
           type="file"
           hasError={fileBuffer !== null ? false : null}
         />
