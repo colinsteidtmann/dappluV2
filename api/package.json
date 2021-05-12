@@ -4,7 +4,7 @@
   "private": true,
   "main": "app.js",
   "scripts": {
-    "start": "node"
+    "start": "node ./run/www"
   },
   "engines": {
       "node": "15.12.0"
