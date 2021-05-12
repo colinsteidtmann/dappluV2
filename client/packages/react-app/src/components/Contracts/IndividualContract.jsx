@@ -93,7 +93,7 @@ const IndividualContract = (props) => {
         try {
           const viewCountReq = await axios({
               method: "post",
-              url: "http://localhost:9000/getYoutubeViews",
+              url: process.env.REACT_APP_API_URL + "getYoutubeViews",
               data: {
                 id: mediaLink
               }

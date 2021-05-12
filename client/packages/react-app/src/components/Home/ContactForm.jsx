@@ -70,7 +70,7 @@ const ContactForm = (props) => {
     //posts to our local api to send the message
     axios({
       method: "post",
-      url: "http://localhost:9000/sendMail",
+      url: "https://dapplu.herokuapp.com/sendMail",
       data: {
         name: formInputs.name,
         email: formInputs.email,

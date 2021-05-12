@@ -10,12 +10,10 @@ const axios = require("axios");
 const IPFS = require('ipfs-core')
 
 let ipfs;
-const init = async() => {
+const initIPFS = async() => {
   ipfs = await IPFS.create()
-  const { cid } = await ipfs.add('Hello world')
-  console.log("cid", cid);
 }
-init()
+initIPFS()
 
 //const ipfs = window.IpfsHttpClient({ host: "ipfs.infura.io", port: 5001, protocol: "https" });
 
@@ -74,7 +72,6 @@ const CreateContract = (props) => {
   const getIPFSHash = async (fileBuffer) => {
     try {
       //IPFS upload
-      console.log("filebuffer", fileBuffer);
       const res = await ipfs.add(fileBuffer);
       const fileHash = res.path;
       return fileHash;

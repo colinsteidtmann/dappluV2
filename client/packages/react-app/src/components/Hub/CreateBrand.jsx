@@ -30,7 +30,7 @@ const CreateBrand = (props) => {
     // //posts to our local api to send the message
     axios({
       method: "post",
-      url: "http://localhost:9000/sendBrandApplication",
+      url: process.env.REACT_APP_API_URL + "sendBrandApplication",
       data: formInputs,
     })
       .then(function (response) {

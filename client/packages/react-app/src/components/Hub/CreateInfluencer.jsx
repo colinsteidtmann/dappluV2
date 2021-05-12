@@ -33,7 +33,7 @@ const CreateInfluencer = (props) => {
     // //posts to our local api to send the message
     axios({
       method: "post",
-      url: "http://localhost:9000/sendInfluencerApplication",
+      url: process.env.REACT_APP_API_URL + "sendInfluencerApplication",
       data: formInputs,
     })
       .then(function (response) {
